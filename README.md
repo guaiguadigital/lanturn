@@ -6,4 +6,7 @@
    ```bash
    git clone https://github.com/Matheus-Cezarr/backend-junior-php-crud.git
    ```
-2. Docker
+2. Suba os containers com Docker:
+
+   ```bash
+   docker-compose up -d
