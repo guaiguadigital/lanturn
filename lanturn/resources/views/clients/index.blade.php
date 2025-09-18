@@ -1,29 +1,38 @@
 @extends('layouts.app')
 
 @section('content')
-<h1>{{ isset($client) ? 'Editar' : 'Criar' }} Cliente</h1>
+<h1>Clientes</h1>
+<a href="{{ route('clients.create') }}" class="btn btn-primary mb-3">Criar Cliente</a>
 
-@if ($errors->any())
-    <ul>
-        @foreach ($errors->all() as $error)
-            <li>{{ $error }}</li>
-        @endforeach
-    </ul>
+@if(session('success'))
+    <div class="alert alert-success">{{ session('success') }}</div>
 @endif
 
-<form action="{{ isset($client) ? route('clients.update', $client->id) : route('clients.store') }}" method="POST">
-    @csrf
-    @if(isset($client))
-        @method('PUT')
-    @endif
-    <label>Nome</label>
-    <input type="text" name="name" value="{{ $client->name ?? old('name') }}">
-    <label>Email</label>
-    <input type="email" name="email" value="{{ $client->email ?? old('email') }}">
-    <label>Telefone</label>
-    <input type="text" name="phone" value="{{ $client->phone ?? old('phone') }}">
-    <label>Endereço</label>
-    <input type="text" name="address" value="{{ $client->address ?? old('address') }}">
-    <button type="submit">Salvar</button>
-</form>
+<table border="1" class="table table-bordered">
+    <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Email</th>
+        <th>Telefone</th>
+        <th>Endereço</th>
+        <th>Ações</th>
+    </tr>
+    @foreach($clients as $client)
+    <tr>
+        <td>{{ $client->id }}</td>
+        <td>{{ $client->name }}</td>
+        <td>{{ $client->email }}</td>
+        <td>{{ $client->phone }}</td>
+        <td>{{ $client->address }}</td>
+        <td>
+            <a href="{{ route('clients.edit', $client->id) }}" class="btn btn-sm btn-warning">Editar</a>
+            <form action="{{ route('clients.destroy', $client->id) }}" method="POST" style="display:inline">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Deseja realmente excluir?')">Excluir</button>
+            </form>
+        </td>
+    </tr>
+    @endforeach
+</table>
 @endsection
