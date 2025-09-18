@@ -16,3 +16,18 @@ composer create-project laravel/laravel lanturn
 
 php artisan serve
 
+# 5  run migrations
+
+php artisan migrate
+
+# 6 create model
+
+php artisan make:model Client -m
+
+# 7 run migratons
+
+php artisan migrate
+
+# 8 create controlador
+
+php artisan make:controller ClientController --resource
