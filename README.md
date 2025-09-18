@@ -33,9 +33,21 @@
    php artisan cache:clear
    php artisan config:cache
    ```
+   Corre o migratons:
+
+   ```bash
+   php artisan migrate
+    ```
 
   Corre o projeto:
+  
+  ```bash
   php artisan serve
+  ```
+
+  Corre test:
+
+  php artisan test
 
 4. Acesse [http://127.0.0.1:8001/clients](http://127.0.0.1:8001/clients) para usar o CRUD.
 

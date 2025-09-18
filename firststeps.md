@@ -35,3 +35,7 @@ php artisan make:controller ClientController --resource
 # 9 run project
 
 php artisan serve
+
+# 10 create test
+
+php artisan make:test ClientTest --unit
