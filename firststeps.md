@@ -12,9 +12,9 @@ composer -V
 # 3 Criar projeto em laravel
 composer create-project laravel/laravel lanturn
 
-# 4 run project
+# 4 Criar app key
 
-php artisan serve
+php artisan key:generate
 
 # 5  run migrations
 
@@ -31,3 +31,7 @@ php artisan migrate
 # 8 create controlador
 
 php artisan make:controller ClientController --resource
+
+# 9 run project
+
+php artisan serve
